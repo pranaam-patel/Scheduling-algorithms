@@ -1,0 +1,37 @@
+.container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+#process-count-input, #input-container, #output-container {
+    margin-bottom: 20px;
+}
+
+#gantt-chart {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 50px; /* Adjust height for visualization */
+    overflow-x: auto;
+}
+
+.gantt-bar {
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#results-table th, #results-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shortest Job First (SJF) Scheduling Algorithm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px auto;
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .gantt-chart {
+      width: 100%;
+      border: 1px solid #ddd;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    .process-bar {
+      border: 1px solid #000;
+      display: inline-block;
+      height: 30px;
+      background-color: #007bff;
+      color: white;
+      line-height: 30px;
+      text-align: center;
+    }
+    .Inputs{
+      font-size: larger;
+      border-radius: 1%;
+      padding: 5px;
+      margin: 5px;
+    }
+    .OutPut{
+      border-radius: 10%;
+    }
+    .margins{
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shortest Job First (SJF) Scheduling Algorithm</h1>
+    <div class="margins">
+      <label for="arrivalTime">Arrival Time:</label>
+      <input type="number" id="arrivalTime" class="Inputs" placeholder="Enter Arrival Time">
+      <label for="burstTime">Burst Time:</label>
+      <input type="number" id="burstTime" class="Inputs" placeholder="Enter Burst Time">
+      <button onclick="addProcess()" class="Inputs">Add Process</button>
+    </div>
+    <table id="processTable">
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Arrival Time</th>
+          <th>Burst Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+    <button onclick="runSJF()" class="Inputs">Run SJF</button>
+    <div id="ganttChart" class="gantt-chart"></div>
+    <div id="output" class="OutPut"></div>
+  </div>
+
+  <script>
+    let processes = [];
+
+    function addProcess() {
+      const arrivalTime = document.getElementById('arrivalTime').value;
+      const burstTime = document.getElementById('burstTime').value;
+
+      if (arrivalTime.trim() === '' || burstTime.trim() === '') {
+        alert('Please enter valid arrival time and burst time.');
+        return;
+      }
+
+      processes.push({ arrivalTime: parseInt(arrivalTime), burstTime: parseInt(burstTime) });
+
+      const tableBody = document.querySelector('#processTable tbody');
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `<td>${processes.length}</td><td>${arrivalTime}</td><td>${burstTime}</td>`;
+      tableBody.appendChild(newRow);
+
+      document.getElementById('arrivalTime').value = '';
+      document.getElementById('burstTime').value = '';
+    }
+
+    function runSJF() {
+      // Sort processes based on burst time
+      processes.sort((a, b) => a.burstTime - b.burstTime);
+
+      const completionTimes = [];
+      let currentTime = 0;
+
+      processes.forEach((process, index) => {
+        // Update current time to the maximum of current time and arrival time
+        currentTime = Math.max(currentTime, process.arrivalTime);
+        // Calculate completion time for the current process
+        completionTimes.push({ processIndex: index + 1, completionTime: currentTime + process.burstTime });
+        // Update current time
+        currentTime += process.burstTime;
+      });
+
+      // Render Gantt chart
+      const ganttChart = document.getElementById('ganttChart');
+      ganttChart.innerHTML = '';
+      completionTimes.forEach(item => {
+        const processBar = document.createElement('div');
+        processBar.className = 'process-bar';
+        processBar.style.width = `${item.completionTime * 10}px`;
+        processBar.textContent = `P${item.processIndex}`;
+        ganttChart.appendChild(processBar);
+      });
+
+      // Render output table
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = '<h2>Completion Time and Turnaround Time</h2>';
+      outputDiv.innerHTML += '<table><thead><tr><th>Process</th><th>Completion Time</th><th>Turnaround Time</th></tr></thead><tbody>';
+      completionTimes.forEach(item => {
+        const turnaroundTime = item.completionTime - processes[item.processIndex - 1].arrivalTime;
+        outputDiv.innerHTML += `<tr><td>P${item.processIndex}</td><td>${item.completionTime}</td><td>${turnaroundTime}</td></tr>`;
+      });
+      outputDiv.innerHTML += '</tbody></table>';
+    }
+  </script>
+</body>
+</html>

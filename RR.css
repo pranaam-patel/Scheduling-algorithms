@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+input, button {
+    margin: 5px;
+}
+
+#ganttChart {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.process-bar {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-right: 2px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCFS Scheduler Simulator</title>
+  <link rel="stylesheet" href="Processes.css">
+</head>
+<body>
+  <div class="container">
+    <h2>FCFS Scheduler Simulator</h2>
+    <label for="processes">Enter the number of processes:</label>
+    <input type="number" id="processes" min="1" value="5">
+    <button onclick="createInputFields()">Generate Input Fields</button>
+    <button onclick="simulate()">Simulate</button>
+
+    <div class="input-fields" id="inputFields"></div>
+
+    <div class="gantt-chart" id="ganttChart"></div>
+
+    <table id="processTable">
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Arrival Time</th>
+          <th>Burst Time</th>
+          <th>Completion Time</th>
+          <th>Turnaround Time</th>
+          <th>Waiting Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="FCFS.js"></script>
+</body>
+</html>

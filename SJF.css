@@ -1,0 +1,30 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+input[type="number"] {
+    width: 50px;
+}
+
+#processInputs {
+    margin-top: 20px;
+}
+
+#output {
+    margin-top: 20px;
+}
+
+#ganttChart {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.bar {
+    height: 30px;
+    background-color: #007bff;
+    border: 1px solid #000;
+    margin: 0 2px;
+}

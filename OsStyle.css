@@ -1,0 +1,24 @@
+body{
+    padding: 100px;
+    margin: 100px;
+    background:  #000;
+    justify-content: center;
+    text-align: center;
+}
+h1{
+    color: white ;
+}
+.block{
+    height: 10vmin;
+    width: 75vmin;
+    padding: vmax;
+    margin: 15vmax;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.bttn{
+    color: white;
+    border: solid;
+    margin: 3px;
+}

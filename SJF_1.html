@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SJF Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px auto;
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .gantt-chart {
+      width: 100%;
+      border: 1px solid #ddd;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    .process-bar {
+      border: 1px solid #000;
+      display: inline-block;
+      height: 30px;
+      background-color: #007bff;
+      color: white;
+      line-height: 30px;
+      text-align: center;
+    }
+    .Inputs {
+      font-size: larger;
+      border-radius: 1%;
+      padding: 5px;
+      margin: 5px;
+    }
+    .OutPut {
+      border-radius: 10%;
+    }
+    .margins {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="processes">Number of Processes:</label>
+    <input type="number" id="processes" class="Inputs" min="1" required>
+    <button onclick="generateForm()" class="margins">Generate Form</button>
+    <button onclick="simulate()" class="margins">Simulate</button>
+    <div id="formContainer" class="margins"></div>
+    <table id="processTable">
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Arrival Time</th>
+          <th>Burst Time</th>
+          <th>Completion Time</th>
+          <th>Turnaround Time</th>
+          <th>Waiting Time</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="gantt-chart" id="ganttChart"></div>
+  </div>
+
+  <script>
+    // Your JavaScript code here
+    // Make sure to include the functions `generateForm()` and `simulate()` here
+  </script>
+</body>
+</html>

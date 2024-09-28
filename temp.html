@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJF Scheduler Simulator</title>
+    <link rel="stylesheet" href="SJF.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SJF Scheduler Simulator</h1>
+        <label for="numProcesses">Number of Processes:</label>
+        <input type="number" id="numProcesses">
+        <button onclick="addProcesses()">Add Processes</button>
+
+        <div id="processInputs"></div>
+
+        <button onclick="simulateSJF()">Simulate SJF</button>
+
+        <div id="ganttChart"></div>
+        <div id="output"></div>
+    </div>
+
+    <script src="SJF.js"></script>
+</body>
+</html>
